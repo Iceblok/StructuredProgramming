@@ -141,7 +141,45 @@ def sort(lst):
 # print(sort([2,1,6,7,3,0]))
 
 
+'''Opdracht 6 - Gemiddelde berekenen'''
+def average(lst):
+    lijst = lst
+    optellen = 0
+    for i in lijst:
+        optellen += i
+    return round(optellen / len(lijst), 1)
 
 
+# print(average([3, 2, 3]))
+
+def average_of_lists(lst):
+    lijsten = lst
+    lijst_met_gemiddelde = []
+    for i in lijsten:
+        lijst_met_gemiddelde.append(average(i))
+    return lijst_met_gemiddelde
 
 
+# print(average_of_lists([[3,2,3], [3,2,3]]))
+
+
+'''Opdracht 7 - Random'''
+def random(number):
+    import random
+    random_number = random.randint(0, number)
+    attempt = 1
+    guess = int(input('Guess the number: '))
+    while guess != random_number:
+        if guess > random_number:
+            guess = int(input('Try lower: '))
+        else:
+            guess = int(input('Try higher: '))
+        attempt += 1
+    if guess == random_number:
+        if attempt == 1:
+            return f'Congrats! It took you {attempt} attempt to find the number.'
+        else:
+            return f'Congrats! It took you {attempt} attempts to find the number.'
+
+
+print(random(10))
