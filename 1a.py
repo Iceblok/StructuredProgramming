@@ -182,4 +182,39 @@ def random(number):
             return f'Congrats! It took you {attempt} attempts to find the number.'
 
 
-print(random(10))
+# print(random(10))
+
+
+'''Opdracht 8 - Compressie'''
+# def compressie(bestand):
+#
+
+'''Opdracht 9 - Cyclisch verschuiven'''
+def cyclisch_verschuiven(ch, n):
+    if n == 0:
+        return ch
+    elif n > 0:
+        lijst = list(str(ch))
+        for x in range(n):
+            lijst.append(lijst[0])
+            lijst.pop(0)
+        string = ''
+        for i in lijst:
+            string += i
+        return string
+    else:
+        lijst = list(str(ch))
+        for x in range(abs(n)):
+            lijst.insert(0, lijst[-1])
+            lijst.pop(-1)
+        string = ''
+        for i in lijst:
+            string += i
+        return string
+
+
+# print(cyclisch_verschuiven(1011000, 0))
+# print(cyclisch_verschuiven(1011000, 3))
+# print(cyclisch_verschuiven(1011100, -4))
+
+
