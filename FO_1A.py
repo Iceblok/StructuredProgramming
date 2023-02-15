@@ -241,6 +241,7 @@ def fibonaci(getal: int):
 
 # print(fibonaci(34))
 
+
 '''Opdracht 11 - Caesarcijfer'''
 def ceasercijfer(tekst: str, rotatie: int):
     alphabet_dict = {}
@@ -276,28 +277,20 @@ def ceasercijfer(tekst: str, rotatie: int):
 print(ceasercijfer('To be or not to be, That is the question', 4))
 
 
-# '''Opdracht 12 - FizzBuzz'''
-# def fizzbuzz(getal: int):
-#     for i in range(1, getal+1):
-#         if i % 3 == 0 and i % 5 == 0:
-#             print('fizzbuzz')
-#         elif i % 3 == 0:
-#             print('fizz')
-#         elif i % 5 == 0:
-#             print('buzz')
-#         else:
-#             print(i)
-#
-#
+'''Opdracht 12 - FizzBuzz'''
+def fizzbuzz(getal: int):
+    for i in range(1, getal+1):
+        if i % 3 == 0 and i % 5 == 0:
+            print('fizzbuzz')
+        elif i % 3 == 0:
+            print('fizz')
+        elif i % 5 == 0:
+            print('buzz')
+        else:
+            print(i)
+
+
 # fizzbuzz(100)
-
-
-
-
-
-
-
-
 
 
 
