@@ -242,89 +242,65 @@ def fibonaci(getal: int):
 # print(fibonaci(34))
 
 '''Opdracht 11 - Caesarcijfer'''
-# https://www.geeksforgeeks.org/caesar-cipher-in-cryptography/
-def ceasercijfer(tekst, s):
-    resultaat = ""
-
-    for i in range(len(tekst)):
-        char = tekst[i]
-
-        if (char.isupper()):
-            resultaat += chr((ord(char) + s - 65) % 26 + 65)
-        elif char in "~ ` { } [ ] ! % ^ * – = + _ | \ / @ : ; < > ? . , # & $ ( ) ":
-            resultaat += char
+def ceasercijfer(tekst: str, rotatie: int):
+    alphabet_dict = {}
+    StringAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    StringAlphabet2 = StringAlphabet.lower()
+    for i in range(len(StringAlphabet)):
+        alphabet_dict[StringAlphabet[i]] = i
+        alphabet_dict[StringAlphabet2[i]] = i+26
+    tekst_code = []
+    for i in tekst:
+        if i in alphabet_dict:
+            tekst_code.append(alphabet_dict[i])
         else:
-            resultaat += chr((ord(char) + s - 97) % 26 + 97)
+            tekst_code.append(i)
+    new_string = ''
+    for i, cipher in enumerate(tekst_code):
+        #str(cipher).isnumeric()
+        # type(cipher) == int or type(cipher) == float:
+        # print(i, tekst_code.index(cipher))
+        if type(cipher) != str:
+            if cipher < 26 and cipher + rotatie > 25:
+                tekst_code[i] = cipher + rotatie - 26
+            elif cipher > 25 and cipher + rotatie > 51:
+                tekst_code[i] = cipher + rotatie - 26
+            else:
+                tekst_code[i] = cipher + rotatie
+        if cipher in alphabet_dict.values():
+            tekst_code[i] = (list(alphabet_dict.keys())[list(alphabet_dict.values()).index(tekst_code[i])])
+        new_string += tekst_code[i]
+    return new_string
 
-    return resultaat
+
+print(ceasercijfer('To be or not to be, That is the question', 4))
 
 
-# print(ceasercijfer('To be or not to be, That is the question', 4))
-
-# Volledig zelf geprobeerd. Niet gelukt :/. uitkomst was:
-# Xw fm wv rsx xs fm, XTlix is xli yuesxisr
-# moest zijn:
-# Xs fi sv rsx xs fi, Xlex mw xli uyiwxmsr
-
-# def ceasercijfer(tekst: str, rotatie: int):
-#     alphabet_dict = {}
-#     alphabet_dict2 = {}
-#     StringAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-#     StringAlphabet2 = StringAlphabet.lower()
-#     for i in range(len(StringAlphabet)):
-#         alphabet_dict[StringAlphabet[i]] = i
-#         alphabet_dict2[StringAlphabet2[i]] = i+26
-#     tekst_code = []
-#     for i in tekst:
-#         if i in alphabet_dict:
-#             tekst_code.append(alphabet_dict[i])
-#         if i in alphabet_dict2:
-#             tekst_code.append(alphabet_dict2[i])
+# '''Opdracht 12 - FizzBuzz'''
+# def fizzbuzz(getal: int):
+#     for i in range(1, getal+1):
+#         if i % 3 == 0 and i % 5 == 0:
+#             print('fizzbuzz')
+#         elif i % 3 == 0:
+#             print('fizz')
+#         elif i % 5 == 0:
+#             print('buzz')
 #         else:
-#             tekst_code.append(i)
-#     # Reden is onbekend, echter wordt een hoofletter zowel als cijfer opgeslagen als letter. vandaar
-#     # het onderstaande toegevoegd
-#     for i in StringAlphabet:
-#         if i in tekst_code:
-#             tekst_code.remove(i)
-#     new_string = ''
-#     for i in tekst_code:
-#         try:
-#             if (i % 1 == 0):
-#                 tekst_code[tekst_code.index(i)] = i+rotatie
-#         except:
-#             pass
-#     for i in tekst_code:
-#         try:
-#             if (i % 1 == 0):
-#                 if i in alphabet_dict.values():
-#                     tekst_code[tekst_code.index(i)] = (list(alphabet_dict.keys())[list(alphabet_dict.values()).index(i)])
-#                 if i in alphabet_dict2.values():
-#                     tekst_code[tekst_code.index(i)] = (list(alphabet_dict2.keys())[list(alphabet_dict2.values()).index(i)])
-#         except:
-#             pass
-#     for i in tekst_code:
-#         new_string += i
-#     return new_string
+#             print(i)
 #
 #
-# print(ceasercijfer('To be or not to be, That is the question', 4))
+# fizzbuzz(100)
 
 
-'''Opdracht 12 - FizzBuzz'''
-def fizzbuzz(getal: int):
-    for i in range(1, getal+1):
-        if i % 3 == 0 and i % 5 == 0:
-            print('fizzbuzz')
-        elif i % 3 == 0:
-            print('fizz')
-        elif i % 5 == 0:
-            print('buzz')
-        else:
-            print(i)
 
 
-fizzbuzz(100)
+
+
+
+
+
+
+
 
 
 
